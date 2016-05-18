@@ -4,3 +4,4 @@
 *.log
 target/*
 /AutoTrans.bat
+dependency-reduced-pom.xml

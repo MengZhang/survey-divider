@@ -1,4 +1,4 @@
-package org.agmip.ui.sdui;
+package org.agmip.tools.surveydivider;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
