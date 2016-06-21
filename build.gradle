@@ -1,0 +1,45 @@
+buildscript {
+  repositories {
+    jcenter()
+    maven {
+      url 'https://plugins.gradle.org/m2/'
+    }
+  }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    classpath 'com.scuilion.syntastic:gradle-syntastic-plugin:0.3.6-java7'
+  }
+}
+
+allprojects {
+  apply plugin: 'com.scuilion.syntastic'
+  repositories {
+    jcenter()
+  }
+}
+
+subprojects {
+  apply plugin: 'java'
+  group = 'org.agmip.lib'
+  version = '1.0.0-SNAPSHOT'
+}
+
+project(':example') {
+  apply plugin: 'application'
+  apply plugin: 'com.github.johnrengelman.shadow'
+  dependencies {
+    compile project(':api')
+  }
+  mainClassName = "org.agmip.examples.data.cropmodel.partition.Main"
+}
+
+project(':api') {
+  dependencies {
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.5'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+  }
+}
+
+task wrapper(type: Wrapper) {
+  jarFile = '.gradlew/gradle-wrapper.jar'
+}
