@@ -5,3 +5,10 @@
 target/*
 /AutoTrans.bat
 dependency-reduced-pom.xml
+\#*\#
+.\#
+.gradle/
+build/
+.idea/
+.syntas*
+
