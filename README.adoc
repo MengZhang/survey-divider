@@ -7,6 +7,6 @@ Local Build Instructions
 ------------------------
 
 [source,java]
+----
 ./gradlew publishToMavenLocal
-
-
+----
