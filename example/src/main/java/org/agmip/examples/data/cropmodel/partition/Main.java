@@ -18,35 +18,34 @@ public class Main {
       System.err.println("File does not exist: " + args[0]);
       System.exit(-1);
     }
+    long start1 = System.currentTimeMillis();
     PartitionBuilder partition = new PartitionBuilder(inputFile);
     // Time check
-    long start1 = System.currentTimeMillis();
-    int[] analysis = partition.analyze();
     long runtime1 = System.currentTimeMillis() - start1;
     long start2 = System.currentTimeMillis();
-    int[] experimentMarkers = partition.markers("experiments", analysis[0]);
-    int[] soilMarkers = partition.markers("soils", analysis[1]);
-    int[] weatherMarkers = partition.markers("weathers", analysis[1]);
+    // A do nothing loop
+    for(byte[] part : partition) {}
     long runtime2 = System.currentTimeMillis() - start2;
     long start3 = System.currentTimeMillis();
-    String[] sids = partition.extractIds("sid", soilMarkers);
-    String[] wids = partition.extractIds("wid", weatherMarkers);
+    int i=0;
+    for(byte[] part : partition) {
+      System.out.println("Found partition #" + (++i));
+    }
     long runtime3 = System.currentTimeMillis() - start3;
     long start4 = System.currentTimeMillis();
-    int[][] exploded = partition.split(experimentMarkers, soilMarkers, weatherMarkers, sids, wids);
+    for(byte[] part : partition) {
+      System.out.println(new String(part, "UTF-8"));
+    }
     long runtime4 = System.currentTimeMillis() - start4;
     long start5 = System.currentTimeMillis();
-    partition.writeFiles(exploded);
+    partition.writeFiles();
     long runtime5 = System.currentTimeMillis() - start5;
     long total = System.currentTimeMillis() - start1;
-    System.out.println("[RUNTIME] analyze: " + runtime1 + " ms");
+    System.out.println("[RUNTIME] allocation:   " + runtime1 + " ms");
+    System.out.println("[RUNTIME] pure loop:    " + runtime2 + " ms");
+    System.out.println("[RUNTIME] counter loop: " + runtime3 + " ms");
+    System.out.println("[RUNTIME] display loop: " + runtime4 + " ms");
     System.out.println("Results:");
-    System.out.println("Experiments: " + analysis[0]);
-    System.out.println("Soils:       " + analysis[1]);
-    System.out.println("Weathers:    " + analysis[2]);
-    System.out.println("[RUNTIME] breakout: " + runtime2 + " ms");
-    System.out.println("[RUNTIME] extraction: " + runtime3 + " ms");
-    System.out.println("[RUNTIME] explode: " + runtime4 + " ms");
     System.out.println("[RUNTIME] TOTAL: " + total + " ms");
   }
 }

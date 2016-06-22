@@ -1,0 +1,12 @@
+Partition Library
+=================
+
+The current parition library is used to partition data **post** DOME application.
+
+Local Build Instructions
+------------------------
+
+[source,java]
+./gradlew publishToMavenLocal
+
+

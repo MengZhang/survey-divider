@@ -24,6 +24,8 @@ subprojects {
   version = '1.0.0-SNAPSHOT'
 }
 
+apply plugin: 'maven-publish'
+
 project(':example') {
   apply plugin: 'application'
   apply plugin: 'com.github.johnrengelman.shadow'
@@ -38,6 +40,16 @@ project(':api') {
     compile 'com.fasterxml.jackson.core:jackson-core:2.7.5'
     compile 'ch.qos.logback:logback-classic:1.1.7'
   }
+  publishing {
+    publications {
+      mavenJava(MavenPublication) {
+        groupId 'org.agmip.lib'
+        artifactId 'partitioner'
+        version '1.0.0-SNAPSHOT'
+        from components.java
+      }
+    }
+  }  
 }
 
 task wrapper(type: Wrapper) {
