@@ -5,10 +5,32 @@
     <artifactId>partitioner</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <name>The DOME</name>
+    <url>http://agmip.org/</url>
+
+    <issueManagement>
+        <url>https://github.com/agmip/survey-divider/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/agmip/dome</url>
+        <connection>scm:git:git://github.com/agmip/dome.git</connection>
+        <developerConnection>scm:git:git@github.com:agmip/dome.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <email>meng.zhang15@ufl.edu</email>
+            <name>Meng Zhang</name>
+            <url>https://github.com/mengzhang</url>
+            <id>mengzhang</id>
+        </developer>
+    </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <jdk.version>1.6</jdk.version>
     </properties>
     <dependencies>
         <dependency>
