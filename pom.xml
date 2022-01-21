@@ -5,7 +5,7 @@
     <artifactId>partitioner</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>The DOME</name>
+    <name>partitioner</name>
     <url>http://agmip.org/</url>
 
     <issueManagement>
@@ -30,7 +30,7 @@
     </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.6</jdk.version>
+        <jdk.version>1.8</jdk.version>
     </properties>
     <dependencies>
         <dependency>
